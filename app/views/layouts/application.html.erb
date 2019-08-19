@@ -1,0 +1,69 @@
+<html>
+    <head>
+      <title>Miniapp</title>
+      <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+      <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+      <%= csrf_meta_tags %>
+    </head>
+    <body>
+    
+    <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+
+  <script   src="https://code.jquery.com/jquery-3.4.1.js"   integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="   crossorigin="anonymous"></script>
+
+  <link rel="stylesheet" href="/style2.css">
+
+
+<header class="header">
+<nav>
+    <div class="nav-wrapper">
+      <a href="/tweets" class="brand-logo"><%= fa_icon('building') %>Miniapp</a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="/tweets"><i class="material-icons left"><%= fa_icon('book') %>ツイート一覧</i></a></li>
+        <li><a href="/tweets/new"><i class="material-icons right"><%= fa_icon('angle-double-right') %>投稿画面</i></a></li>
+      </ul>
+    </div>
+  </nav>
+
+      
+      </div>
+ </nav>
+ 
+ </header>
+
+ <%= yield %>
+
+
+<div class="nav-wrapper">
+<% if user_signed_in? %>
+        <div class="user_nav grid-6">
+
+            <ul class="user__info">
+              <li>
+                <a href="/users/<%= current_user.id %>"><%= fa_icon('user') %>マイページ</a>
+                <a class="post" href="/tweets/new"><%= fa_icon('paper-plane') %>投稿する</a>
+
+          <%= fa_icon('sign-out') %><%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+           </li>
+            </ul>
+         <span><%= current_user.nickname %>
+       </span>
+ 
+      
+       </div>
+      <% else %>
+        <div class="grid-6">
+          <%= link_to "ログイン", new_user_session_path, class: 'post' %>
+          <%= link_to "新規登録", new_user_registration_path, class: 'post' %>
+        </div>
+      <% end %>
+    </div>
+<a class="btn waves-effect waves-light" href="/" type="submit" name="action"><%= fa_icon('home') %>トップに戻る
+  </button>
+
+    </body>
+  </html>

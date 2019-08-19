@@ -1,0 +1,9 @@
+<div class="contents row" >
+    <h1><%= @nickname %>さんの投稿</h1>
+    <% @tweets.each do |tweet| %>
+      <div class="content_post">
+        <%= simple_format(tweet.text) %>
+      </div>
+    <% end %>
+    <%= paginate(@tweets) %>
+  </div>

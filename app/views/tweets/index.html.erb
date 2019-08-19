@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sample</title>
+  <style type="text/css" href="./style.css"></style>
+</head>
+<body>
+<link rel="stylesheet" href="/style2.css">
+  
+
+
+
+
+
+
+
+
+
+<div class="contents_row" >
+<div class= "contents__header"><h1>投稿内容</h1></div>
+
+
+<div class= "contents__main">
+  <% @tweets.each do |tweet| %>
+ </div>
+
+      <% if user_signed_in? && current_user.id == tweet.user_id %>        
+          <div class="more_list">
+
+            
+              <%= fa_icon('comment') %><%= link_to '編集', "/tweets/#{tweet.id}/edit", method: :get %>
+            
+
+            
+              <%= fa_icon('trash') %><%= link_to '削除', "/tweets/#{tweet.id}", method: :delete %>
+            
+          </div>
+        </div>
+      <% end %>
+
+      <%= simple_format(tweet.text) %>
+      <span class="name">
+      </span>
+    </div>
+  <% end %> 
+</div>
+
+
+
+
+
+
+<script type="text/javascript" src="./app.js"></script>
+</body>
+</html>
